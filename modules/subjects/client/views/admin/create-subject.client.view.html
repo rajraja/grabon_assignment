@@ -57,10 +57,21 @@
                 <tr>
                   <th>Subject Name</th>
                   <th>Marks</th>
+                  <th>&nbsp;</th>
                 </tr>
                 <tr ng-repeat="subject in subjectList">
                   <td>{{subject.subjectName}}</td>
                   <td>{{subject.marks}}</td>
+                  <td>
+                    <div class="">
+                      <a class="btn btn-primary" ui-sref="subjects.editByAdmin({userId: user._id, subjectId: subject._id})">
+                        <i class="glyphicon glyphicon-edit"></i>
+                      </a>
+                      <a class="btn btn-default margin_left10" ng-click="removeByAdmin(subject)">
+                        <i class="glyphicon glyphicon-trash"></i>
+                      </a>
+                    </div>
+                  </td>
                 </tr>
               </tbody>
             </table>

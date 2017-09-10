@@ -29,6 +29,13 @@ angular.module('subjects').config(['$stateProvider',
           roles: ['admin']
         }
       })
+      .state('subjects.editByAdmin', {
+        url: '/:userId/:subjectId/edit',
+        templateUrl: 'modules/subjects/client/views/admin/edit-subject.client.view.html',
+        data: {
+          roles: ['user', 'admin']
+        }
+      })
 
       .state('subjects.view', {
         url: '/:subjectId',

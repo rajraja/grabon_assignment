@@ -1,0 +1,52 @@
+<section ng-controller="SubjectsController" ng-init="findOneForUpdate()">
+  <div class="page-header">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="page-title">Edit: {{subject.subjectName}}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="box box-primary">
+    <div class="box-body">
+      <form name="subjectForm" novalidate>
+          <div class="row">
+            <div class="col-md-8">
+              <div class="form-group" show-errors>
+                <label for="subjectName">Subject Name</label>
+                <input name="subjectName" type="text" ng-model="subject.subjectName" id="subjectName" class="form-control" placeholder="Subject name" required>
+                <div ng-messages="subjectForm.subjectName.$error" role="alert">
+                  <p class="help-block error-text" ng-message="required">Subject name is required.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group" show-errors>
+                <label for="marks">Marks</label>
+                <input name="marks" type="number" ng-model="subject.marks" id="marks" class="form-control" placeholder="Marks" required>
+                <div ng-messages="subjectForm.marks.$error" role="alert">
+                  <p class="help-block error-text" ng-message="required">Marks is required.</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div class="row">
+            <div class="col-md-12 text-center">
+              <div class="form-group">
+                <input type="button" class="btn btn-primary" ng-click="updateByAdmin(subjectForm.$valid)" value="Update"/>
+                <input type="button" class="btn btn-default margin_left20" ui-sref="subjects.add({userId: user._id})" value="Cancel"/>
+              </div>
+            </div>
+          </div>
+
+          <div ng-show="error" class="text-danger">
+            <strong ng-bind="error"></strong>
+          </div>
+      </form>
+    </div>
+  </div>
+
+
+
+</section>

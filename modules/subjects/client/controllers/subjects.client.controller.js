@@ -81,6 +81,24 @@ angular.module('subjects').controller('SubjectsController', ['$scope', '$statePa
       });
     };
 
+    // Find existing Subject
+    $scope.findOneForUpdate = function () {
+      $scope.subject = Subjects.get({
+        subjectId: $stateParams.subjectId
+      });
+
+      var userId = $stateParams.userId;
+      var reqObject = {userId: userId};
+
+      Subjects.getUserByUserId(reqObject,
+        function (response) {
+          $scope.user = response;
+        },
+        function (errorResponse) {
+          $scope.error = errorResponse.data.message;
+        });
+    };
+
     $scope.initSubject = function () {
       var userId = $stateParams.userId;
       var reqObject = {userId: userId};
@@ -127,7 +145,34 @@ angular.module('subjects').controller('SubjectsController', ['$scope', '$statePa
         function (errorResponse) {
           $scope.error = errorResponse.data.message;
         });
+    };
 
+    // Remove existing Subject
+    $scope.removeByAdmin = function (subject) {
+      if (confirm('Are you sure you want to delete this subject? This action cannot be undone.')) {
+        if (subject) {
+          subject.$remove();
+          $scope.initSubject();
+        }
+      }
+    };
+
+    // Update existing Subject
+    $scope.updateByAdmin = function (isValid) {
+      $scope.error = null;
+
+      if (!isValid) {
+        $scope.$broadcast('show-errors-check-validity', 'subjectForm');
+        return false;
+      }
+
+      var subject = $scope.subject;
+
+      subject.$update(function () {
+        $location.path('subjects/add/' + $scope.user._id);
+      }, function (errorResponse) {
+        $scope.error = errorResponse.data.message;
+      });
     };
 
   }
