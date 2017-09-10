@@ -52,13 +52,21 @@ This command does a few things:
 * If you're running in a development environment, it will then also install development dependencies needed for testing and running your application.
 * Finally, when the install process is over, npm will initiate a bower install command to install all the front-end modules needed for the application
 
+Import the mongodb database:
+
+```
+$ mongorestore -d grabon_dev [...path_of_project/grabon_dev]
+```
+
+I have kept database dump inside this project for development process. and name of the dump [grabon_dev]
+
 ## Running Your Application
 After the install process is over, you'll be able to run your application using Grunt, just run grunt default task:
 
 ```
 $ node server.js
 ```
-## or
+### OR
 
 ```
 $ grunt
@@ -66,4 +74,17 @@ $ grunt
 
 Your application should run on port 3000 with the *development* environment configuration, so in your browser just go to [http://localhost:3000](http://localhost:3000)
 
-That's it! Your application should be running. To proceed with your development, check the other sections in this documentation.
+That's it! Your application should be running.
+
+### User ids:
+
+```
+admins:
+id: admin  
+password: 1111111
+
+users:
+id: santu  
+password: 1111111
+
+```
