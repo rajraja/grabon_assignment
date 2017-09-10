@@ -1,4 +1,3 @@
-
 ## Prerequisites
 Make sure you have installed all of the following prerequisites on your development machine:
 * Node.js - [Download & Install Node.js](https://nodejs.org/en/download/) and the npm package manager. If you encounter any problems, you can also use this [GitHub Gist](https://gist.github.com/isaacs/579814) to install Node.js.
@@ -16,24 +15,11 @@ $ npm install -g bower
 $ npm install -g grunt-cli
 ```
 
-* Sass - You're going to use [Sass](http://sass-lang.com/) to compile CSS during your grunt task. Make sure you have ruby installed, and then install Sass using gem install:
-
-```bash
-$ gem install sass
-```
-
-```bash
-$ npm install -g grunt-cli
-```
-
 * Gulp - (Optional) You may use Gulp for Live Reload, Linting, and SASS or LESS.
 
 ```bash
 $ npm install gulp -g
 ```
-
-
-
 
 ## Quick Install
 
@@ -58,7 +44,7 @@ Import the mongodb database:
 $ mongorestore -d grabon_dev [...path_of_project/grabon_dev]
 ```
 
-I have kept database dump inside this project for development process. and name of the dump [grabon_dev]
+I have kept it database dump inside this project for development process. and name of the dump: [grabon_dev]
 
 ## Running Your Application
 After the install process is over, you'll be able to run your application using Grunt, just run grunt default task:
@@ -79,11 +65,11 @@ That's it! Your application should be running.
 ### User ids:
 
 ```
-admins:
+Admins:
 id: admin  
 password: 1111111
 
-users:
+Users:
 id: santu  
 password: 1111111
 
