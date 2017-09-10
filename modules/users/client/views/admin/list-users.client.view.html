@@ -1,0 +1,105 @@
+<section ng-init="initLoadUsers()">
+  <div class="page-header">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="page-title">Users</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="box box-default">
+    <div class="box-body">
+
+      <div class="row">
+        <div class="col-md-6 col-sm-12 col-lg-6 col-xs-12">
+          <label for="selectRoles">Roles </label>
+          <!-- Multi select -->
+          <ui-select id="selectRoles" name="selectRoles{{$index}}" multiple tagging ng-model="selectRoles" ng-change="updateRoles(selectRoles)">
+            <ui-select-match placeholder="Select Roles">{{$item.resourceBundle[0].displayName}} </ui-select-match>
+            <ui-select-choices repeat="role in roles | filter: $select.search">
+              <div ng-bind-html="role.resourceBundle[0].displayName | highlight: $select.search"></div>
+            </ui-select-choices>
+          </ui-select>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 col-sm-12 col-xm-12 col-lg-6 ">
+          <label for="user_name">Name</label>
+          <input type="Search" data-ng-model="user_name" id="user_name" class="form-control" placeholder="Search" />
+        </div>
+        <div class="col-md-6 col-sm-12 col-xm-12 col-lg-6 ">
+          <label for="user_email">Email</label>
+          <input type="Search" data-ng-model="user_email" id="user_email" class="form-control" placeholder="Search" />
+        </div>
+      </div>
+
+      <!--todo end  -->
+      <div class="row margin_top10">
+        <div class="col-md-2 col-sm-4 col-lg-1 col-xs-6">
+          <input type="button" class="btn btn-primary" ng-click="callSearch(user_email, user_name)" value="Search"/>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+      <div class="box box-info" ng-show="numItems">
+        <div class="row">
+          <bgf-pagination class="col-lg-9 col-md-8 col-sm-7 col-xs-8 pull-left margin_left10" range-from="rangeFrom" range-to="rangeTo" num-items="numItems" class="margin_left10" page="page" client-limit="clientLimit" url="'/api/adminResource/loadUsers'" link-group-size="2" collection="users" url-params="urlParams" transform-response="userDataFromServer" templateUrl="tpl/paginate-anything.html">
+          </bgf-pagination>
+          <div class="col-lg-2 col-md-3 col-sm-4 col-xs-3 pull-right margin_top20">
+            <div class=" text-center "><span class="number_bold">{{rangeFrom + 1}}</span>-<span class="number_bold">{{rangeTo + 1}}</span><span class="of_font_size"> of </span><span class="number_bold">{{numItems}}</span></div>
+          </div>
+        </div>
+        <div class="box-body">
+          <div class="table-responsive">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th>User Details</th>
+                  <th>Status</th>
+                  <th>Roles</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="user in users" ui-sref="admin.user({userId: user._id})">
+                  <td>
+                    <div class="item">
+                      <img ng-src="{{user.profileImageURL}}" alt="{{user.username}}" class="pull-left user_list_image" />
+                      <div class="usernameinlist"><strong>{{user.displayName}}</strong></div>
+                      <div class="text-muted">{{user.email}}</div>
+                    </div>
+                  </td>
+                  <td>
+                    <div ng-show='user.is_deleted==false'><span class="label label-success tag">Active</span></div>
+                    <div ng-show='user.is_deleted==true'><span class="label label-default tag">Deactive</span></div>
+                  </td>
+                  <td>
+                    <div class="">
+                      <span ng-repeat="role in user.roles">
+                        <small class="label label-primary tag"> {{role}} </small>
+                      </span>
+                    </div>
+                  </td>
+                </tr>
+
+              </tbody>
+            </table>
+          </div>
+
+          <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+              <div class="alert alert-info text-center" ng-if="users.length == 0">
+                No Users of selected status.
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>

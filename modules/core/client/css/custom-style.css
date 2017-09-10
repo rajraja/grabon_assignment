@@ -1,0 +1,57 @@
+/* NOTE: custom css can wrtie here */
+
+/* AdminLte */
+.my_content_wrapper {
+    background-color: #ecf0f5 !important;
+}
+.page-header {
+    margin: 0 0 5px !important;
+    font-size: medium !important;
+}
+.page-header .page-title{font-size: 22px; font-weight: 400;}
+.main-header {z-index: 810 !important;}
+.fixed .content-wrapper, .fixed .right-side {padding-top: 50px;}
+.main-sidebar, .left-side { padding-top: 50px;}
+/*.main-sidebar, .left-side { padding-top: 0px !important; }*/
+@media (max-width: 768px) {
+    .main-header {z-index: 1030 !important;}
+}
+/* paginate anything */
+.per-page{display: none !important;}
+.number_bold{font-weight: 700;}
+
+/* for user list */
+.usernameinlist {
+    color: #3c8dbc;
+    font-size: 1em;
+    margin-left: 55px;
+    padding-top: 8px;
+}
+.user_list_image{
+  height: auto;
+  max-width: 55px;
+  width: 100%;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+/* select2 css */
+
+.select2 > .select2-choice.ui-select-match {
+    /* Because of the inclusion of Bootstrap */
+    height: 29px;
+}
+.selectize-control > .selectize-dropdown {
+    top: 36px;
+}
+/* Some additional styling to demonstrate that append-to-body helps achieve the proper z-index layering. */
+.select-box {
+  background: #fff;
+  position: relative;
+  z-index: 1;
+}
+.alert-info.positioned {
+  margin-top: 1em;
+  position: relative;
+  z-index: 10000; /* The select2 dropdown has a z-index of 9999 */
+}

@@ -1,0 +1,74 @@
+<section ng-controller="SubjectsController" ng-init = "initSubject()">
+  <div class="page-header">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="page-title">Add Subject : {{user.displayName}}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="box box-primary">
+    <div class="box-body">
+      <form name="subjectForm" novalidate>
+          <div class="row">
+            <div class="col-md-5">
+              <div class="form-group" show-errors>
+                <label for="subjectName">Subject Name</label>
+                <input name="subjectName" type="text" ng-model="subjectName" id="subjectName" class="form-control" placeholder="Subject name" required>
+                <div ng-messages="subjectForm.subjectName.$error" role="alert">
+                  <p class="help-block error-text" ng-message="required">Subject name is required.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-5">
+              <div class="form-group" show-errors>
+                <label for="marks">Marks</label>
+                <input name="marks" type="number" ng-model="marks" id="marks" class="form-control" placeholder="Marks" required>
+                <div ng-messages="subjectForm.marks.$error" role="alert">
+                  <p class="help-block error-text" ng-message="required">Marks is required.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-2">
+              <label> &nbsp;</label>
+              <div class="form-group text-center">
+                <input type="button" class="btn btn-primary" ng-click="add(subjectForm.$valid)" value="Add"/>
+              </div>
+            </div>
+          </div>
+
+          <div ng-show="error" class="text-danger">
+            <strong ng-bind="error"></strong>
+          </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="box box-primary">
+    <div class="box-header with-border">
+      <h3 class="box-title">Subject List</h3>
+    </div>
+    <div class="box-body">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="table-responsive no-padding">
+            <table class="table table-hover">
+              <tbody>
+                <tr>
+                  <th>Subject Name</th>
+                  <th>Marks</th>
+                </tr>
+                <tr ng-repeat="subject in subjectList">
+                  <td>{{subject.subjectName}}</td>
+                  <td>{{subject.marks}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</section>

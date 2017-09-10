@@ -1,0 +1,43 @@
+<section ng-controller="ConfigurationsController">
+  <div class="page-header">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="page-title">New Configuration</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="box box-primary">
+    <div class="box-body">
+      <form name="configurationForm" novalidate>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group" show-errors>
+                <label for="title">Title</label>
+                <input name="title" type="text" ng-model="title" id="title" class="form-control" placeholder="Title" required>
+                <div ng-messages="configurationForm.title.$error" role="alert">
+                  <p class="help-block error-text" ng-message="required">Configuration title is required.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label for="content">Content</label>
+                <textarea name="content" ng-model="content" id="content" class="form-control" cols="30" rows="10" placeholder="Content"></textarea>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group text-center">
+            <input type="button" class="btn btn-primary" ng-click="create(configurationForm.$valid)" value="Create"/>
+          </div>
+          <div ng-show="error" class="text-danger">
+            <strong ng-bind="error"></strong>
+          </div>
+      </form>
+    </div>
+  </div>
+
+</section>

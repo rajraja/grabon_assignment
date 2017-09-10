@@ -1,0 +1,120 @@
+<!-- <div class="container" ng-controller="HeaderController">
+  <div class="navbar-header">
+    <button class="navbar-toggle" type="button" ng-click="toggleCollapsibleMenu()">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a ui-sref="home" class="navbar-brand">MEAN.JS</a>
+  </div>
+  <nav class="collapse navbar-collapse" collapse="!isCollapsed" role="navigation">
+    <ul class="nav navbar-nav" ng-if="menu.shouldRender(authentication.user);">
+      <li ng-repeat="item in menu.items | orderBy: 'position'" ng-if="item.shouldRender(authentication.user);" ng-switch="item.type" ng-class="{ active: $state.includes(item.state), dropdown: item.type === 'dropdown' }" class="{{item.class}}" dropdown="item.type === 'dropdown'">
+        <a ng-switch-when="dropdown" class="dropdown-toggle" dropdown-toggle role="button">{{::item.title}}&nbsp;<span class="caret"></span></a>
+        <ul ng-switch-when="dropdown" class="dropdown-menu">
+          <li ng-repeat="subitem in item.items | orderBy: 'position'" ng-if="subitem.shouldRender(authentication.user);" ui-sref-active="active">
+            <a ui-sref="{{subitem.state}}" ng-bind="subitem.title"></a>
+          </li>
+        </ul>
+        <a ng-switch-default ui-sref="{{item.state}}" ng-bind="item.title"></a>
+      </li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right" ng-hide="authentication.user">
+      <li ui-sref-active="active">
+        <a ui-sref="authentication.signup">Sign Up</a>
+      </li>
+      <li class="divider-vertical"></li>
+      <li ui-sref-active="active">
+        <a ui-sref="authentication.signin">Sign In</a>
+      </li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right" ng-show="authentication.user">
+      <li class="dropdown" dropdown>
+        <a class="dropdown-toggle user-header-dropdown-toggle" dropdown-toggle role="button">
+          <img ng-src="{{authentication.user.profileImageURL}}" alt="{{authentication.user.displayName}}" class="header-profile-image" />
+          <span ng-bind="authentication.user.displayName"></span> <b class="caret"></b>
+        </a>
+        <ul class="dropdown-menu" role="menu">
+          <li ui-sref-active="active">
+            <a ui-sref="settings.profile">Edit Profile</a>
+          </li>
+          <li ui-sref-active="active">
+            <a ui-sref="settings.picture">Change Profile Picture</a>
+          </li>
+          <li ui-sref-active="active" ng-show="authentication.user.provider === 'local'">
+            <a ui-sref="settings.password">Change Password</a>
+          </li>
+          <li ui-sref-active="active">
+            <a ui-sref="settings.accounts">Manage Social Accounts</a>
+          </li>
+          <li class="divider"></li>
+          <li>
+            <a href="/api/auth/signout" target="_self">Signout</a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+</div> -->
+
+<div class="" ng-controller="HeaderController" ng-init="homeInit()">
+  <!-- <a class="logo">
+    <span class="logo-mini"><b>A</b>DB</span>
+    <span class="logo-lg"><b>Admin</b>DBC</span>
+  </a> -->
+  <nav class="navbar navbar-static-top" role="navigation">
+    <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+      <span class="sr-only">Toggle navigation</span>
+    </a>
+    <div class="navbar-custom-menu">
+      <ul class="nav navbar-nav">
+
+        <li class="dropdown user user-menu" ng-hide="authentication.user">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <img src="/lib/AdminLTE/dist/img/avatar.png" class="user-image" alt="Not Authenticated">
+            <span class="hidden-xs">Not Authenticated</span>
+          </a>
+          <ul class="dropdown-menu">
+            <li class="user-footer">
+              <div class="pull-right">
+                <a ui-sref="authentication.signup" class="btn btn-default btn-flat">Sign Up</a>
+              </div>
+              <div class="pull-left">
+                <a ui-sref="authentication.signin" class="btn btn-default btn-flat">Sign In</a>
+              </div>
+            </li>
+          </ul>
+        </li>
+
+        <li class="dropdown user user-menu" ng-show="authentication.user">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <img src="{{authentication.user.profileImageURL}}" class="user-image" alt="{{authentication.user.displayName}}">
+            <span class="hidden-xs">{{authentication.user.displayName}}</span>
+          </a>
+          <ul class="dropdown-menu">
+            <!-- User image -->
+            <li class="user-header">
+              <img src="{{authentication.user.profileImageURL}}" class="img-circle" alt="{{authentication.user.displayName}}">
+              <p>
+                {{authentication.user.displayName}}
+                <small>Last Login: {{authentication.user.previousLoginTime | date:'medium'}}</small>
+              </p>
+            </li>
+
+            <!-- Menu Footer-->
+            <li class="user-footer">
+              <div class="pull-left">
+                <a ui-sref="settings.profile" class="btn btn-default btn-flat">Profile</a>
+              </div>
+              <div class="pull-right">
+                <a href="/api/auth/signout" target="_self" class="btn btn-default btn-flat">Sign out</a>
+              </div>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+</div>

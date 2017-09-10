@@ -1,0 +1,61 @@
+<section ng-init="initViewUsers()">
+  <div class="page-header">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="page-title" ng-bind="user.displayName"></div>
+      </div>
+      <div class="col-md-6">
+        <a class="btn btn-primary pull-right" ui-sref="admin.user-edit({userId: user._id})">
+          <i class="glyphicon glyphicon-edit"></i>
+        </a>
+        <a class="btn btn-primary pull-right margin_right10" ng-if="user._id !== authentication.user._id" ui-sref="subjects.add({userId: user._id})"> Add Subjects          
+        </a>
+        <!-- <a class="btn btn-primary" ng-click="remove();" ng-if="user._id !== authentication.user._id">
+          <i class="glyphicon glyphicon-trash"></i>
+        </a> -->
+      </div>
+    </div>
+  </div>
+
+  <div class="box box-info">
+    <div class="box-body">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="row">
+            <div class="col-md-3"><strong>First Name</strong></div>
+            <div class="col-md-6" ng-bind="user.firstName"></div>
+          </div>
+          <hr/>
+          <div class="row">
+            <div class="col-md-3"><strong>Last Name</strong></div>
+            <div class="col-md-6" ng-bind="user.lastName"></div>
+          </div>
+          <hr/>
+          <div class="row">
+            <div class="col-md-3"><strong>Username</strong></div>
+            <div class="col-md-6">{{user.username}}</div>
+          </div>
+          <hr/>
+          <div class="row">
+            <div class="col-md-3"><strong>Email</strong></div>
+            <div class="col-md-6" ng-bind="user.email"></div>
+          </div>
+          <hr/>
+          <div class="row">
+            <div class="col-md-3"><strong>Created</strong></div>
+            <div class="col-md-6">{{user.created | date:'medium'}}</div>
+          </div>
+          <hr/>
+          <div class="row">
+            <div class="col-md-3"><strong>Roles</strong></div>
+            <div class="col-md-6">
+              <span ng-repeat="role in user.roles">
+                <small class="label label-primary tag">{{role}}</small>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

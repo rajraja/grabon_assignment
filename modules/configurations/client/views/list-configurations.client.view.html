@@ -1,0 +1,40 @@
+<section ng-controller="ConfigurationsController" ng-init="find()">
+  <div class="page-header">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="page-title">Configurations</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="box box-primary" >
+    <div class="box-body">
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="list-group">
+            <a ng-repeat="configuration in configurations" ui-sref="configurations.view({configurationId: configuration._id})" class="list-group-item">
+              <small class="list-group-item-text">
+                Posted on
+                <span>{{configuration.createdOn | date:'mediumDate'}}</span>
+                by
+                <span>{{configuration.user.displayName}}</span>
+              </small>
+              <h4 class="list-group-item-heading">{{configuration.title}}</h4>
+              <p class="list-group-item-text">{{configuration.content}}</p>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="alert alert-warning text-center" ng-if="configurations.$resolved && !configurations.length">
+            No configurations yet, why don't you <a ui-sref="configurations.create">create one</a>?
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
